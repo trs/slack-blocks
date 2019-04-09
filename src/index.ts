@@ -1,43 +1,36 @@
-import {
-  Block,
-  ActionsBlock,
-  ContextBlock,
-  DividerBlock,
-  ImageBlock,
-  SectionBlock
-} from './blocks';
-// import { ButtonElement, DatePickerElement, ImageElement, OverflowMenuElement } from "./elements";
-import { deepClone } from './clone';
+import * as Blocks from "./blocks";
+import * as Elements from "./elements";
+import * as Objects from "./objects";
 
-export class SlackBlock {
-  private blocks: Block[] = [];
+const SlackBlock = {
+  Actions: Blocks.ActionsBlock,
+  Context: Blocks.ContextBlock,
+  Divider: Blocks.DividerBlock,
+  Image: Blocks.ImageBlock,
+  Section: Blocks.SectionBlock
+};
 
-  private addBlock(block: Block) {
-    this.blocks.push(deepClone(block));
-    return this;
-  }
+const SlackElement = {
+  Button: Elements.ButtonElement,
+  DatePicker: Elements.DatePickerElement,
+  Image: Elements.ImageElement,
+  OverflowMenu: Elements.OverflowMenuElement,
+  StaticSelect: Elements.StaticSelectElement,
+  ExternalSelect: Elements.ExternalSelectElement,
+  UsersSelect: Elements. UsersSelectElement,
+  ConversationsSelect: Elements.ConversationsSelectElement,
+  ChannelsSelect: Elements.ChannelsSelectElement
+};
 
-  public actions(action: ActionsBlock) {
-    return this.addBlock(ActionsBlock(action));
-  }
+const SlackObject = {
+  Confirm: Objects.ConfirmObject,
+  Option: Objects.OptionObject,
+  OptionGroup: Objects.OptionGroupObject,
+  Text: Objects.TextObject
+};
 
-  public context(context: ContextBlock) {
-    return this.addBlock(ContextBlock(context));
-  }
-
-  public divider(divider: DividerBlock) {
-    return this.addBlock(DividerBlock(divider));
-  }
-
-  public image(image: ImageBlock) {
-    return this.addBlock(ImageBlock(image));
-  }
-
-  public section(section: SectionBlock) {
-    return this.addBlock(SectionBlock(section));
-  }
-
-  public static get element() {
-    return {};
-  }
-}
+export {
+  SlackBlock,
+  SlackElement,
+  SlackObject
+};

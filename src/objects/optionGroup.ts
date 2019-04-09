@@ -8,3 +8,9 @@ export interface OptionGroupObject {
   /** An array of option objects that belong to this specific group. Maximum of 100 items. */
   options: OptionObject[];
 }
+
+export function OptionGroupObject(fields: OptionGroupObject): OptionGroupObject {
+  return {
+    ...fields
+  };
+}

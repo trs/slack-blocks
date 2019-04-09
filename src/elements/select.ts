@@ -68,6 +68,15 @@ export interface ExternalSelectElement extends BaseSelect {
   min_query_length?: number;
 }
 
+export function ExternalSelectElement(
+  fields: ExternalSelectElement
+): ExternalSelectElement {
+  return {
+    ...fields,
+    type: 'external_select'
+  };
+}
+
 /**
  *
  *
@@ -76,6 +85,15 @@ export interface ExternalSelectElement extends BaseSelect {
 export interface UsersSelectElement extends BaseSelect {
   type: 'users_select';
   initial_user?: string;
+}
+
+export function UsersSelectElement(
+  fields: UsersSelectElement
+): UsersSelectElement {
+  return {
+    ...fields,
+    type: 'users_select'
+  };
 }
 
 /**
@@ -88,6 +106,15 @@ export interface ConversationsSelectElement extends BaseSelect {
   initial_conversation?: string;
 }
 
+export function ConversationsSelectElement(
+  fields: ConversationsSelectElement
+): ConversationsSelectElement {
+  return {
+    ...fields,
+    type: 'conversations_select'
+  };
+}
+
 /**
  *
  *
@@ -97,3 +124,13 @@ export interface ChannelsSelectElement extends BaseSelect {
   type: 'channels_select';
   initial_channel?: string;
 }
+
+export function ChannelsSelectElement(
+  fields: ChannelsSelectElement
+): ChannelsSelectElement {
+  return {
+    ...fields,
+    type: 'channels_select'
+  };
+}
+
