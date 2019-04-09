@@ -1,0 +1,112 @@
+{
+  "name": "slack-blocks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test:once": "jest",
+    "test": "npm run test:once -- --watchAll",
+    "build": "tsc",
+    "lint": "prettier --write src/**/*.ts && eslint --fix src/**/*.ts"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trs/slack-blocks"
+  },
+  "author": "Tyler Stewart",
+  "license": "MIT",
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/indent": [
+        "error",
+        2
+      ],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "argsIgnorePattern": "_"
+        }
+      ],
+      "prettier/prettier": "error"
+    }
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "release": {
+    "branch": "master"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(\\.|/)spec\\.ts",
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.11.6",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "jest": "^24.5.0",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "semantic-release": "^15.13.3",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.4000"
+  }
+}
